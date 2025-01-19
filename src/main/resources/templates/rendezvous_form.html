@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter un Rendez-vous</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2><a href="/menu" style="color: white;">Menu</a></h2>
+        <a href="/patients">Patients</a>
+        <a href="/rendezvous" class="active">Rendez-vous</a>
+        <a href="/consultations">Consultations</a>
+        <a href="/medecins">Médecins</a>
+        <a href="/specialites">Spécialités</a>
+    </div>
+
+    <div class="main-content">
+        <h1>Ajouter un Rendez-vous</h1>
+        <form th:action="@{/rendezvous/add}" th:object="${rendezvous}" method="post">
+            <input type="hidden" th:field="*{idrdv}">
+
+            <div class="form-group">
+                <label for="daterdv">Date du Rendez-vous:</label>
+                <input type="date" id="daterdv" th:field="*{daterdv}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="heurerdv">Heure du Rendez-vous:</label>
+                <input type="time" id="heurerdv" th:field="*{heurerdv}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="patient">Patient:</label>
+                <select id="patient" th:field="*{patient.idpatient}" required>
+                    <option value="" disabled selected>Sélectionner un patient</option>
+                    <option th:each="patient : ${patients}" 
+                            th:value="${patient.idpatient}"  
+                            th:text="${patient.nompatient} + ' ' + ${patient.prenompatient}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="medecin">Médecin:</label>
+                <select id="medecin" th:field="*{medecin.idmedecin}" required>
+                    <option value="" disabled selected>Sélectionner un médecin</option>
+                    <option th:each="medecin : ${medecins}" 
+                            th:value="${medecin.idmedecin}"  
+                            th:text="${medecin.nommedecin}"></option>
+                </select>
+            </div>
+
+            <button type="submit">Enregistrer</button>
+        </form>
+    </div>
+</body>
+</html>

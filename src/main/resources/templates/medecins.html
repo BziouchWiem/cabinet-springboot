@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Médecins</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2><a href="/menu" style="color: white;">Menu</a></h2>
+	    <a href="/patients">Patients</a>
+		<a href="/rendezvous">Rendez-vous</a>
+	    <a href="/consultations">Consultations</a>
+		<a href="/medecins" class="active">Médecins</a>
+	    <a href="/specialites">Spécialités</a>
+	</div>
+
+
+    <div class="main-content">
+        <h1>Liste des Médecins</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="medecin : ${medecins}">
+                    <td th:text="${medecin.id}"></td>
+                    <td th:text="${medecin.nom}"></td>
+                    <td th:text="${medecin.prenom}"></td>
+                    <td th:text="${medecin.adr}"></td>
+                    <td th:text="${medecin.email}"></td>
+                    <td>
+                        <a th:href="@{/medecins/edit/{id}(id=${medecin.id})}" class="action-btn edit-btn">Modifier</a>
+                        <a th:href="@{/medecins/delete/{id}(id=${medecin.id})}" class="action-btn delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce médecin ?')">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="/medecins/add" class="btn">Ajouter un Médecin</a>
+        </div>
+    </div>
+</body>
+</html>

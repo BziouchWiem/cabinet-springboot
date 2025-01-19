@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter une Spécialité</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2><a href="/menu" style="color: white;">Menu</a></h2>
+	    <a href="/patients">Patients</a>
+		<a href="/rendezvous">Rendez-vous</a>
+	    <a href="/consultations">Consultations</a>
+		<a href="/medecins">Médecins</a>
+	    <a href="/specialites" class="active">Spécialités</a>
+	</div>
+	<div class="main-content">
+    <h1>Ajouter une Spécialité</h1>
+    
+    <form th:action="@{/specialites/add}" th:object="${specialite}" method="post">
+        <label for="nomspecialite">Nom de la Spécialité:</label>
+        <input type="text" id="nomspecialite" th:field="*{nomspecialite}" required>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+	</div>
+</body>
+</html>

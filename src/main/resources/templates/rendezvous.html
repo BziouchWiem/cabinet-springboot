@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Rendez-vous</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2><a href="/menu" style="color: white;">Menu</a></h2>
+	    <a href="/patients">Patients</a>
+		<a href="/rendezvous" class="active">Rendez-vous</a>
+	    <a href="/consultations">Consultations</a>
+		<a href="/medecins">Médecins</a>
+	    <a href="/specialites">Spécialités</a>
+	</div>
+    <div class="main-content">
+        <h1>Liste des Rendez-vous</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+					<th>Patient</th>
+					<th>Medecin</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="rendezvous : ${rendezvous}">
+                    <td th:text="${rendezvous.idrdv}"></td>
+                    <td th:text="${rendezvous.daterdv}"></td>
+                    <td th:text="${rendezvous.heurerdv}"></td>
+					<td><span th:text="${rendezvous.patient.nompatient} + ' ' + ${rendezvous.patient.prenompatient}"></span></td>
+					<td><span th:text="${rendezvous.medecin.nommedecin} + ' ' + ${rendezvous.medecin.prenommedecin}"></span></td>         
+                    <td>
+                        <a th:href="@{/rendezvous/edit/{id}(id=${rendezvous.idrdv})}" class="action-btn edit-btn">Modifier</a>
+                        <a th:href="@{/rendezvous/delete/{id}(id=${rendezvous.idrdv})}" class="action-btn delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce rendez-vous ?')">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="/rendezvous/add" class="btn">Ajouter un Rendez-vous</a>
+        </div>
+    </div>
+</body>
+</html>

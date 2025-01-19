@@ -1,0 +1,337 @@
+/* Global Body and General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Remove text decoration (underline) from links */
+a {
+    text-decoration: none;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #01579B;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.sidebar h2 {
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    color: #B3E5FC;
+    padding: 10px;
+    text-decoration: none;
+    margin: 8px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #039BE5;
+    color: white;
+}
+
+.sidebar .active {
+    background-color: #0277BD;
+    color: white;
+}
+
+/* Main Content Styling */
+.main-content {
+    margin-left: 250px; /* Account for the sidebar width */
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title Styling */
+h1 {
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+    border-bottom: none; /* Removed bottom line from title */
+}
+
+/* Table Styling */
+table {
+    width: 90%; /* Reduced table width */
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+table th, table td {
+    padding: 8px 10px; /* Reduced padding for smaller table */
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #0277BD;
+    color: white;
+    font-size: 14px; /* Reduced font size */
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Buttons (Edit, Delete) */
+.action-btn {
+    padding: 6px 15px; /* Reduced padding for buttons */
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 12px; /* Reduced font size */
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+.edit-btn {
+    background-color: #73BA9B; /* Green for Edit */
+    color: white;
+}
+
+.delete-btn {
+    background-color: #C1121F; /* Red for Delete */
+    color: white;
+}
+
+.action-btn i {
+    margin-right: 5px;
+}
+
+/* Hover Effect for Action Buttons */
+.action-btn:hover {
+    background-color: #039BE5;
+    transform: scale(1.05);
+}
+
+/* Hover Effect for Delete and Edit */
+.edit-btn:hover {
+    background-color: #003E1F;
+}
+
+.delete-btn:hover {
+    background-color: #780000;
+}
+
+/* Form Styles */
+form {
+    width: 60%; /* Increased width */
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligned items to the top */
+    align-items: flex-start; /* Aligned items to the left */
+}
+
+form label {
+    display: block;
+    color: #333;
+    font-size: 16px; /* Increased font size */
+    font-weight: bold;
+    text-align: left; /* Ensuring labels are aligned to the left */
+    width: 100%;
+    margin-bottom: 10px; /* Increased margin for spacing */
+}
+
+form input, form select, form textarea {
+    width: 98%; /* Full width for the inputs */
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+form input[type="date"], form input[type="time"] {
+    width: 400%; /* Adjusted width for date and time inputs */
+}
+
+form button {
+    width: 20%; /* Button now spans the full width */
+    margin: 0 auto; /* Center the button horizontally */
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Input and textarea focus styles */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form input[type="time"]:focus,
+form textarea:focus {
+    outline: none;
+    border: 1px solid #039BE5;
+    background-color: #fff;
+}
+
+/* Generic Button */
+.btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px; /* Reduced padding */
+    background-color: #039BE5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px; /* Reduced font size */
+    transition: background-color 0.3s, transform 0.2s ease;
+	text-decoration:none;
+}
+
+.btn:hover {
+    background-color: #0277BD;
+    transform: scale(1.05);
+}
+
+.btn:active {
+    background-color: #01579B;
+    transform: scale(1);
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Background */
+    padding-top: 60px;
+    opacity: 0;
+    animation: fadeInModal 0.5s ease-out forwards, zoomInModal 0.5s ease-out forwards;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal .close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Confirmation Button */
+#confirmDelete {
+    padding: 12px 25px;
+    background-color: #C1121F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#confirmDelete:hover {
+    background-color: #780000;
+}
+
+/* Modal Close Button */
+button {
+    padding: 12px 25px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+/* Center the action buttons and modal */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Table Row Animation */
+table tr {
+    opacity: 0;
+    animation: fadeInRow 0.5s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animation for form and modal */
+form {
+    animation: fadeInRow 0.5s ease-out forwards;
+}

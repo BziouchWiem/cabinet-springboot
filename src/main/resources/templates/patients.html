@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Patients</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2><a href="/menu" style="color: white;">Menu</a></h2>
+	    <a href="/patients" class="active">Patients</a>
+		<a href="/rendezvous">Rendez-vous</a>
+	    <a href="/consultations">Consultations</a>
+		<a href="/medecins">Médecins</a>
+	    <a href="/specialites">Spécialités</a>
+	</div>
+
+
+    <div class="main-content">
+        <h1>Liste des Patients</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Adresse</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.idpatient}"></td>
+                    <td th:text="${patient.nompatient}"></td>
+                    <td th:text="${patient.prenompatient}"></td>
+                    <td th:text="${patient.emailpatient}"></td>
+                    <td th:text="${patient.adrpatient}"></td>
+                    <td>
+                        <a th:href="@{/patients/edit/{id}(id=${patient.idpatient})}" class="action-btn edit-btn">Modifier</a>
+                        <a th:href="@{/patients/delete/{id}(id=${patient.idpatient})}" class="action-btn delete-btn" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce patient ?')">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="/patients/add" class="btn">Ajouter un Patient</a>
+        </div>
+    </div>
+</body>
+</html>

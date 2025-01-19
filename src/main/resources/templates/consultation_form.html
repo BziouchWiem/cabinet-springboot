@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ajouter / Modifier une Consultation</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<h2><a href="/menu" style="color: white;">Menu</a></h2>
+	    <a href="/patients">Patients</a>
+		<a href="/rendezvous">Rendez-vous</a>
+	    <a href="/consultations" class="active">Consultations</a>
+		<a href="/medecins">Médecins</a>
+	    <a href="/specialites">Spécialités</a>
+	</div>
+
+	<div class="main-content">
+    <h1 th:text="${consultation.idcons == null ? 'Ajouter' : 'Modifier'} + ' Consultation'"></h1>
+    
+    <form th:action="@{${consultation.idcons == null ? '/consultations/add' : '/consultations/edit/{id}(id=${consultation.idcons})'}}"
+          th:object="${consultation}" method="post">
+        
+        <label for="datecons">Date de Consultation:</label>
+        <input type="date" id="datecons" th:field="*{datecons}" required>
+        
+        <label for="recapcons">Récapitulatif:</label>
+        <textarea id="recapcons" th:field="*{recapcons}" required></textarea>
+
+        <button type="submit" class="btn">Enregistrer</button>
+    </form>
+	</div>
+</body>
+</html>
